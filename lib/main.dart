@@ -75,36 +75,40 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Timer(
-              remainingTime: 182,
-            ),
-            // Your Timer component should be here
-
-            ElevatedButton(
-              onPressed: _isTimerRunning ? _terminateTimer : _startTimer,
-              child: Text(_isTimerRunning ? 'Stop Timer' : 'Start Timer'),
-              style: ElevatedButton.styleFrom(
-                primary: _isTimerRunning ? Colors.red : Colors.green,
-                // Background color
-                onPrimary: Colors.white,
-                // Text Color
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30), // Rounded edges
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Expanded(
+                child: Timer(
+                  remainingTime: 182,
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                // Button padding
-                textStyle: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-                elevation: 10, // Shadow elevation
               ),
-            ),
-          ],
+              // Your Timer component should be here
+
+              ElevatedButton(
+                onPressed: _isTimerRunning ? _terminateTimer : _startTimer,
+                child: Text(_isTimerRunning ? 'Stop Timer' : 'Start Timer'),
+                style: ElevatedButton.styleFrom(
+                  primary: _isTimerRunning ? Colors.red : Colors.green,
+                  // Background color
+                  onPrimary: Colors.white,
+                  // Text Color
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30), // Rounded edges
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  // Button padding
+                  textStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  elevation: 10, // Shadow elevation
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
