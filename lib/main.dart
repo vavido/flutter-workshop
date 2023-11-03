@@ -68,8 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,21 +79,24 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Timer(), // Your Timer component should be here
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            const Timer(
+              remainingTime: 182,
             ),
+            // Your Timer component should be here
+
             ElevatedButton(
               onPressed: _isTimerRunning ? _terminateTimer : _startTimer,
               child: Text(_isTimerRunning ? 'Stop Timer' : 'Start Timer'),
               style: ElevatedButton.styleFrom(
-                primary: _isTimerRunning ? Colors.red : Colors.green, // Background color
-                onPrimary: Colors.white, // Text Color
+                primary: _isTimerRunning ? Colors.red : Colors.green,
+                // Background color
+                onPrimary: Colors.white,
+                // Text Color
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30), // Rounded edges
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20), // Button padding
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                // Button padding
                 textStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -106,12 +107,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
     );
   }
 }
-
