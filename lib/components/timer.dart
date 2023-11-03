@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import "dart:async";
 
-class Timer extends StatelessWidget {
+class TimerComponent extends StatelessWidget {
   final int remainingTime;
 
-  const Timer({super.key, required this.remainingTime});
+  const TimerComponent({super.key, required this.remainingTime});
 
   String get remainingTimeString {
     final minutes =
@@ -12,6 +13,7 @@ class Timer extends StatelessWidget {
         (this.remainingTime % 60).floor().toString().padLeft(2, '0');
     return '$minutes:$seconds';
   }
+
 
   @override
   Widget build(BuildContext context) {

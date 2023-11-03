@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:timer/components/timer.dart';
+import 'dart:async';
 
 void main() {
   runApp(const MyApp());
@@ -44,6 +45,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   bool _isTimerRunning = false;
+  Timer? timer;
+  int _remainingTime = 182;
+
+
 
   // Assuming your Timer component has a method to start the timer
   void _startTimer() {
@@ -51,6 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
       _isTimerRunning = true;
       // Add the logic or method call to start the timer here
       // For example: timer.start();
+    });
+
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        _remainingTime--;
+      });
     });
   }
 
@@ -60,7 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
       // Add the logic or method call to terminate the timer here
       // For example: timer.terminate();
     });
+
+    timer?.cancel();
   }
+  
 
   _incrementCounter() {
     setState(() {
@@ -80,9 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Expanded(
-                child: Timer(
-                  remainingTime: 182,
+              Expanded(
+                child: TimerComponent(
+                  remainingTime: _remainingTime,
                 ),
               ),
               // Your Timer component should be here
